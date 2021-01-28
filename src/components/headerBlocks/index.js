@@ -1,11 +1,16 @@
 import s from './style.module.css';
 
-const HeaderBlock = () => {
+import { ReactComponent as ReactLogo } from '../../assets/logo.svg';
+
+const HeaderBlock = ({title, hidebackground = false, descr}) => {
+    const styleRoot = hidebackground ? {backgroundImage: 'none'} : {};
     return (
-        <div>
+        <div className={s.root} style={styleRoot}>
             <div>
-                <h1 className={s.header}>This is Pockemon Card Game</h1>
-                <p>Simple Triple Trial Card Game</p>
+                <ReactLogo />
+                {title ? 
+                (<h1 className={s.header}>{title}</h1>) : null}
+                <p>{descr}</p>
             </div>
         </div>
     )
