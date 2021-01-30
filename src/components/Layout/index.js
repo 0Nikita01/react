@@ -1,7 +1,7 @@
 import styleLayout from './style2.module.css';
 
 
-const Layout = ({id, title, descr, urlBg = false, colorBg = false}) => {
+const Layout = ({id, title, urlBg = false, colorBg = false, children}) => {
     
     const   bgStyle = urlBg ? {background : "url(" + urlBg + ")"} : colorBg ? {backgroundColor: colorBg} : {};
     return (
@@ -13,7 +13,7 @@ const Layout = ({id, title, descr, urlBg = false, colorBg = false}) => {
                         <span className={styleLayout.separator}></span>
                     </div>
                     <div className={styleLayout.desc + ' ' + styleLayout.full}>
-                        {descr ? (<p>{descr}</p>) : null}
+                        {children}
                     </div>
                 </article>
             </div>
