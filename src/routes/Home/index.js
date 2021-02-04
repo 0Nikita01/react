@@ -3,22 +3,18 @@ import Header from '../../components/Header';
 import Layout from '../../components/Layout';
 import bg2 from '../../assets/bg2.jpg';
 import bg3 from '../../assets/bg3.jpg';
-import Footer from '../../components/Footer';
 import cards from '../../json/cards.json';
 import PockemonCard from '../../components/PockemonCard';
-import MenuHeader from '../../components/MenuHeader';
 import AppStyle from './style.module.css';
 
 const POCKEMONS = cards;
 console.log(POCKEMONS);
 const HomePage = ({onChangePage}) => {
     const handlerClickButton = (page) => {
-        console.log('####: <HomePage />');
         onChangePage && onChangePage(page);
     }
 	return (
 		<>
-			<MenuHeader />
             <Header 
                 title="This is title" 
                 descr="This is Description!" 
@@ -53,7 +49,6 @@ const HomePage = ({onChangePage}) => {
 					}
 				</div>
 			</Layout>
-			<Footer />
 		</>
 	)
 }

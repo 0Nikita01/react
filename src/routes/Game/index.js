@@ -4,12 +4,14 @@ const GamePage = ({onChangePage}) => {
         onChangePage("app");
     }
     return (
-        <div>
-            <p>This is Game Page!!!</p>
-            <button onClick={handleClick}>
-                Home
-            </button>
-        </div>
+        <>
+            <div>
+                <p>This is Game Page!!!</p>
+                <button onClick={handleClick}>
+                    Home
+                </button>
+            </div>
+        </>
     );
 };
 
