@@ -2,15 +2,17 @@ import { useState } from 'react';
 import Menu from '../Menu';
 import Navbar from '../Navbar';
 
-const MenuHeader = () => {
-    const [bClass, setbClass] = useState(false);
+const MenuHeader = ({bgActive}) => {
+    const [bClass, setbClass] = useState(null);
+
     const handlerClickHamb = () => {
-        setbClass(!bClass);
+        setbClass(prevState => !prevState);
     }
+
     return (
         <>
            <Menu bClass={bClass}/>
-           <Navbar onClickHaburger={handlerClickHamb} bClass={bClass}/>
+           <Navbar onClickHaburger={handlerClickHamb} bClass={bClass} bgActive={bgActive}/>
         </>
     );
 };
