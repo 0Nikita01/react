@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const MENU = [
     {
         title: 'HOME',
-        to: '/welcome',
+        to: '/home',
     },    
     {
         title: 'GAME',
@@ -21,7 +21,7 @@ const MENU = [
     },
 ]
 
-const Menu = ({bClass}) => {
+const Menu = ({bClass, onClickLinks}) => {
     return (
         <div className={cn(s.menuContainer , {[s.active]: bClass === true}, {[s.deactive]: bClass === false})}>
         <div className={s.overlay}/>
@@ -30,7 +30,7 @@ const Menu = ({bClass}) => {
                 {
                     MENU.map(({title, to}, index) => (
                         <li key={index}>
-                            <Link to={to}>
+                            <Link to={to} onClick={onClickLinks}>
                                 {title}
                             </Link>
                         </li>

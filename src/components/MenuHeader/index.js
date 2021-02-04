@@ -11,7 +11,7 @@ const MenuHeader = ({bgActive}) => {
 
     return (
         <>
-           <Menu bClass={bClass}/>
+           <Menu bClass={bClass} onClickLinks={handlerClickHamb}/>
            <Navbar onClickHaburger={handlerClickHamb} bClass={bClass} bgActive={bgActive}/>
         </>
     );
