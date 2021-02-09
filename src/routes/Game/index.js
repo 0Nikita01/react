@@ -64,12 +64,14 @@ const GamePage = ({onChangePage}) => {
         const id = randomID(1, 100, true);
         const index = randomID(0, 4);
         const newPokemon = POCKEMONS[index];
+        const newPockemons = Object.fromEntries(Object.entries(Pockemons).map(item => {return item}));
         newPokemon.id = id;
-        database.ref('pokemons/' + newKey).set(newPokemon);
-        database.ref('pokemons').once('value', (snapshot) => {
-            setPockemons(snapshot.val());
-        })
-        
+        database.ref('pokemons/' + newKey)
+            .set(newPokemon)
+            .then(() => {
+                newPockemons[newKey] = newPokemon;
+                setPockemons(newPockemons);
+            });      
     }
 
     const history = useHistory();
