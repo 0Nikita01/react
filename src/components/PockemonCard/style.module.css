@@ -40,6 +40,7 @@
 .pokemonCard.selected {
     margin-top: -20px;
     margin-bottom: 20px;
+    border-color: #97b3e6;
 }
 
 .cardFront,
@@ -66,6 +67,11 @@
 .pokemonCard:active .wrap.front::after,
 .pokemonCard:focus .wrap.front::after {
     border-color: var(--rock);
+}
+
+.pokemonCard.selected .wrap.front.selected::after,
+.pokemonCard.selected .wrap.front.selected::after {
+    border-color: var(--dragon);
 }
 
 .wrap {

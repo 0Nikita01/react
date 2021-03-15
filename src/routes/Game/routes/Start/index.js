@@ -4,19 +4,29 @@ import PockemonCard from '../../../../components/PockemonCard';
 import s from './style.module.css';
 import { FireBaseContext } from '../../../../context/firebaseContext';
 import { PokemonContext } from '../../../../context/pokemonContext';
+import {useDispatch, useSelector} from 'react-redux';
+import {getPokemonsAsync, selectPokemonsData, /*selectPokemonsLoading*/ } from '../../../../store/pokemons';
 
 const StartPage = ({onChangePage}) => {
     const firebase = useContext(FireBaseContext);
     const pokemonContext = useContext(PokemonContext);
+    //const isLoading = useSelector(selectPokemonsLoading);
+    const pokemonsRedux = useSelector(selectPokemonsData);
+    const dispatch = useDispatch();
     const history = useHistory();
     const [Pockemons, setPockemons] = useState({});
+
     useEffect(() => {
-        firebase.getPokemonSoket((Pockemons) => {
-            setPockemons(Pockemons);
+        dispatch(getPokemonsAsync());
+    }, [dispatch]);
+    
+    useEffect(() => {
+        firebase.getPokemonSoket((pokemonsRedux) => {
+            setPockemons(pokemonsRedux);
         });
 
         return () => firebase.offPokemonSoket();
-    }, []);
+    }, [pokemonsRedux, firebase])
 
     const handleCardClick = (key) => {
         const pokemon = {...Pockemons[key]}

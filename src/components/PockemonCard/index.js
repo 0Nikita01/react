@@ -20,7 +20,7 @@ const PockemonCard = ({className, name, img, id, type, values, minimize, isActiv
                 [s.selected]: isSelected,
             })} onClick={handleClick}>
             <div className={s.cardFront}>
-                <div className={cn(s.wrap, s.front)}>
+                <div className={cn(s.wrap, s.front, {[s.selected]: isSelected,})}>
                     <div className={cn(s.pokemon, s[type], s[possession])}>
                         <div className={s.values}>
                             <div className={cn(s.count, s.top)}>{values.top}</div>
