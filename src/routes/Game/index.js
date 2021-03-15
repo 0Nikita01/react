@@ -24,10 +24,15 @@ const GamePage = () => {
             }
         })
     }
+
+    const handlerClearContext = () => {
+        setSelectedPokemons({});
+    }
     return (
         <PokemonContext.Provider value={{
             pokemon: selectedPokemons,
-            onSelectedPokemons: handlerSelectedPokemons
+            onSelectedPokemons: handlerSelectedPokemons,
+            onClearContext: handlerClearContext,
         }}>
             <Switch>
                 <Route path={`${match.path}/`} exact component={StartPage} />
