@@ -13,10 +13,26 @@ import s from './App.module.css';
 import 'react-notifications/lib/notifications.css';
 import { FireBaseContext } from './context/firebaseContext';
 import FirebaseClass from './service/firebase';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { getUserAsync, selectUserLoading } from './store/user';
 
 const App = () => {
+	const isUserLoading = useSelector(selectUserLoading);
 	const location = useLocation();
 	const isPadding = location.pathname === '/' || location.pathname === '/game/board';
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		dispatch(getUserAsync());
+	}, []);
+
+	if (isUserLoading) {
+		return 'Loading';
+	}
+
+
+
 	return (
 		<FireBaseContext.Provider value={FirebaseClass}>
 			<Switch>
