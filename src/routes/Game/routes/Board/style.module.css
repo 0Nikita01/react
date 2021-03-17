@@ -33,16 +33,16 @@
 
 .playerOne {
     position: absolute;
-    top: 4.3vw;
-    left: 5vw;
-    width: 18vw;
+    top: calc(4.3vw - 100px);
+    left: 10vw;
+    width: 13vw;
     height: 50.3vw;
 }
 
 .playerTwo {
     position: absolute;
-    top: 4.3vw;
-    right: 5vw;
-    width: 18vw;
+    top: calc(4.3vw - 100px);
+    right: 10vw;
+    width: 13vw;
     height: 50.3vw;
 }
