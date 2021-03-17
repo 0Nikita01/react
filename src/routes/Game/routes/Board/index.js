@@ -35,6 +35,7 @@ const BoardPage = () => {
     const [player2, setPlayer2] = useState([]);
     const [choiceCard, setChoiceCard] = useState(null);
     const [steps, setSteps] = useState(0);
+    const [arrowPlayer1, setArrowPlayer1] = useState(true);
     const history = useHistory();
 
     useEffect(async () => {
@@ -113,6 +114,13 @@ const BoardPage = () => {
         }
     }, [steps, board])
 
+    useEffect(() => {
+        if (steps <= 9)
+        {
+            setArrowPlayer1(prevState => !prevState);
+        }
+    }, [board]);
+
     return (
         <div className={s.root}>
 			<div className={s.playerOne}>
@@ -121,6 +129,7 @@ const BoardPage = () => {
                         player={1}
                         cards={player1} 
                         onClickCard={(card) => setChoiceCard(card)}
+                        hidden={arrowPlayer1}
                     />
                 }
 			</div>
@@ -144,6 +153,7 @@ const BoardPage = () => {
                     player={2}
                     cards={player2} 
                     onClickCard={(card) => setChoiceCard(card)}
+                    hidden={!arrowPlayer1}
                 />
             </div>
         </div>
